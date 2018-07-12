@@ -4,6 +4,7 @@ const fs = require('fs');
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('currentYear', () => new Date().getFullYear());
 hbs.registerHelper('screamIt', (text) => text.toUpperCase());
+const port = process.env.PORT || 3000;
 let app = express();
 app.use(express.static(__dirname + '/public'))
     .use((req, res, next) => {
@@ -26,4 +27,4 @@ app.use(express.static(__dirname + '/public'))
             pageTitle: 'About Page'
         })
     })
-    .listen(3000, () => console.log('app started!'));
+    .listen(port, () => console.log(`App started on port ${port}`));
