@@ -20,11 +20,17 @@ app.use(express.static(__dirname + '/public'))
         })
     })
     .get('/bad', (req, res) => {
-        res.send('about page');
+        res.send('bad page');
     })
     .get('/about', (req, res) => {
         res.render('about.hbs', {
             pageTitle: 'About Page'
-        })
+        });
+    })
+    .get('/projects', (req, res) => {
+        res.render('projects.hbs', {
+            pageTitle: 'Projects Page',
+            actualMessage:'Portfolio here'
+        });
     })
     .listen(port, () => console.log(`App started on port ${port}`));
